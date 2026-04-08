@@ -1,15 +1,26 @@
 @import "tailwindcss";
+@plugin "./hero.ts";
+@source "../node_modules/@heroui/theme/dist/**/*.{js,ts,jsx,tsx}";
+@custom-variant dark (&:is(.dark *));
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
 
 :root {
+  --base-size: 10px;
   --background: #ffffff;
   --foreground: #171717;
+  --primary: #EC2024;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-lato), Tahoma, sans-serif;
+  --font-mono: ui-monospace, "Cascadia Code", monospace;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -19,8 +30,59 @@
   }
 }
 
+html[data-theme="dark"] {
+}
+
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-lato), Tahoma, sans-serif;
+}
+
+.container {
+  display: flex;
+  width: calc(var(--base-size) * 144);
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+@media only screen and (min-width: 1920px) {
+  :root {
+    --base-size: 0.421vw !important;
+  }
+}
+
+/* Breakpoint XL */
+@media only screen and (max-width: 1920px) {
+  :root {
+    --base-size: 0.521vw !important;
+  }
+}
+
+/* Breakpoint LG */
+@media only screen and (max-width: 1340px) {
+  :root {
+    --base-size: 0.746vw !important;
+  }
+}
+
+/* Breakpoint MD */
+@media only screen and (max-width: 1024px) {
+  :root {
+    --base-size: 0.977vw !important;
+  }
+}
+
+/* Breakpoint SM */
+@media only screen and (max-width: 768px) {
+  :root {
+    --base-size: 1.302vw !important;
+  }
+}
+
+/* Breakpoint XS */
+@media only screen and (max-width: 440px) {
+  :root {
+    --base-size: 2.667vw !important;
+  }
 }

@@ -1,0 +1,70 @@
+.calculator {
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--base-size) * 2);
+  padding: calc(var(--base-size) * 2);
+  border: 1px solid var(--foreground);
+  border-radius: calc(var(--base-size) * 0.8);
+  width: 100%;
+  max-width: calc(var(--base-size) * 50);
+}
+
+.calculatorTitle {
+  font-size: calc(var(--base-size) * 1.8);
+  font-weight: 700;
+  margin: 0;
+}
+
+.priceRow {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: calc(var(--base-size) * 2);
+  flex-wrap: wrap;
+}
+
+.priceLabel {
+  font-size: calc(var(--base-size) * 1.4);
+}
+
+.priceInput {
+  width: calc(var(--base-size) * 10);
+  padding: calc(var(--base-size) * 0.6) calc(var(--base-size) * 1);
+  font-size: calc(var(--base-size) * 1.4);
+  border: 1px solid var(--foreground);
+  background: var(--background);
+  color: var(--foreground);
+  border-radius: calc(var(--base-size) * 0.4);
+}
+
+.carList {
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--base-size) * 1);
+}
+
+.carRow {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: calc(var(--base-size) * 1) calc(var(--base-size) * 1.2);
+  border: 1px solid var(--foreground);
+  border-radius: calc(var(--base-size) * 0.4);
+  font-size: calc(var(--base-size) * 1.3);
+}
+
+.carName {
+  font-weight: 600;
+}
+
+.carFuel {
+  flex-shrink: 0;
+  margin-left: calc(var(--base-size) * 2);
+}
+
+.note {
+  font-size: calc(var(--base-size) * 1.2);
+  opacity: 0.8;
+  margin: 0;
+}
