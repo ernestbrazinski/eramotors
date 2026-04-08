@@ -3,13 +3,13 @@
 import { useMemo, useState } from "react";
 import type { Car } from "@/src/types/cars";
 import type { Place } from "@/src/types/places";
-import { useCurrency } from "@/src/contexts/CurrencyContext";
-import carsData from "@/src/data/cars.json";
+import { useCurrency } from "@/src/stores/currencyStore";
+import { cars as carsData } from "@/src/api/demo/cars";
 import styles from "./FuelCalculator.module.scss";
 
-const cars = carsData as Car[];
+const cars = carsData;
 
-/** Цена бензина в Грузии (GEL/л), ориентир — можно обновлять/парсить на день брони */
+/** Default fuel price in Georgia (GEL/l) — update or fetch on booking date */
 const DEFAULT_FUEL_PRICE_GEL = 3.05;
 
 interface FuelCalculatorProps {

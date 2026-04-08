@@ -20,4 +20,7 @@ export const CURRENCIES = [
 ] as const;
 
 export const PHONE_NUMBER = "+995555123456";
-export const PHONE_NUMBER_DISPLAY = "+995 555 123 456";
+export const PHONE_NUMBER_DISPLAY = "+995 591116535";
+
+/** Telegram public username without @ (t.me/… links) */
+export const TELEGRAM_USERNAME = "chasenstatus7";

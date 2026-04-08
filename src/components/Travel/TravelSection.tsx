@@ -2,13 +2,13 @@
 
 import { useState, useMemo } from "react";
 import type { Place } from "@/src/types/places";
-import placesData from "@/src/data/places.json";
+import { places as placesData } from "@/src/api/demo/places";
 import FuelCalculator from "./FuelCalculator";
 import styles from "./TravelSection.module.scss";
 
-const places = placesData as Place[];
+const places = placesData;
 
-/** URL iframe Google Maps (без API key): центр на выбранном месте или Грузия. */
+/** Google Maps embed URL (no API key): centers on the selected place or Georgia. */
 function getMapEmbedUrl(selected: Place | null): string {
   const q = selected ? `${selected.lat},${selected.lng}` : "Georgia";
   const z = selected ? 10 : 7;

@@ -3,9 +3,9 @@
 import { useMemo, useState } from "react";
 import { Button } from "@heroui/react";
 import { Select } from "@/src/components/_ui";
-import type { Car, CarCategory } from "@/src/types/cars";
+import type { CarCategory } from "@/src/types/cars";
 import { CAR_CATEGORY_LABELS } from "@/src/types/cars";
-import carsData from "@/src/data/cars.json";
+import { cars as carsData } from "@/src/api/demo/cars";
 import CarCard from "./CarCard";
 import styles from "./CarsSection.module.scss";
 
@@ -18,7 +18,7 @@ const SORT_OPTIONS: { value: SortType; label: string }[] = [
   { value: "oldest", label: "По новизне (сначала старые)" },
 ];
 
-const cars = carsData as Car[];
+const cars = carsData;
 const ALL_CATEGORIES: CarCategory[] = [
   "economy",
   "compact",

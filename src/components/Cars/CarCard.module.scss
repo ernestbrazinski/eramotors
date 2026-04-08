@@ -6,8 +6,8 @@
   max-width: calc(var(--base-size) * 36);
   border-radius: calc(var(--base-size) * 2.4);
   overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  cursor: pointer;
+  border: 1px solid rgba(128, 128, 128, 0.2);
+  transition: border-color 0.2s;
 
   &:hover {
     .cardImage {
@@ -16,13 +16,39 @@
   }
 }
 
+.cardSelected {
+  border-color: var(--primary);
+}
+
 .cardImageWrap {
+  position: relative;
   width: 100%;
   aspect-ratio: 16 / 10;
   flex-shrink: 0;
   overflow: hidden;
   background: #fff;
   padding: 10px;
+}
+
+.cardSelectedBadge {
+  position: absolute;
+  top: calc(var(--base-size) * 1.2);
+  left: calc(var(--base-size) * 1.2);
+  display: flex;
+  align-items: center;
+  gap: calc(var(--base-size) * 0.6);
+  padding: calc(var(--base-size) * 0.5) calc(var(--base-size) * 1.2);
+  border-radius: calc(var(--base-size) * 2);
+  background: var(--primary);
+  color: #fff;
+  font-size: calc(var(--base-size) * 1.2);
+  font-weight: 700;
+
+  svg {
+    width: calc(var(--base-size) * 1.4);
+    height: calc(var(--base-size) * 1.4);
+    flex-shrink: 0;
+  }
 }
 
 .cardImage {
@@ -99,4 +125,39 @@
   border-radius: calc(var(--base-size) * 1.6);
   background: var(--foreground);
   color: var(--background);
+}
+
+.cardActions {
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--base-size) * 0.8);
+}
+
+.cardSelectBtn {
+  padding: calc(var(--base-size) * 0.9) calc(var(--base-size) * 1.6);
+  border-radius: calc(var(--base-size) * 1);
+  border: 1px solid rgba(128, 128, 128, 0.3);
+  background: transparent;
+  color: var(--foreground);
+  font-size: calc(var(--base-size) * 1.3);
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s, color 0.2s;
+  width: 100%;
+
+  &:hover {
+    border-color: var(--primary);
+    color: var(--primary);
+  }
+}
+
+.cardSelectBtnActive {
+  border-color: var(--primary);
+  background: rgba(236, 32, 36, 0.08);
+  color: var(--primary);
+}
+
+.cardRentDropdown {
+  width: 100%;
 }

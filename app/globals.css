@@ -13,7 +13,7 @@
   --base-size: 10px;
   --background: #ffffff;
   --foreground: #171717;
-  --primary: #EC2024;
+  --primary: #ec2024;
 }
 
 @theme inline {
@@ -23,14 +23,20 @@
   --font-mono: ui-monospace, "Cascadia Code", monospace;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html.dark {
+  --background: #121212;
+  --foreground: #ededed;
+  background: var(--background);
+  color-scheme: dark;
 }
 
-html[data-theme="dark"] {
+html.light {
+  color-scheme: light;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: calc(var(--base-size) * 8);
 }
 
 body {

@@ -1,0 +1,30 @@
+.toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: calc(var(--base-size) * 4);
+  height: calc(var(--base-size) * 4);
+  border-radius: calc(var(--base-size) * 0.8);
+  border: 1px solid rgba(128, 128, 128, 0.3);
+  background: transparent;
+  color: var(--foreground);
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s;
+  flex-shrink: 0;
+
+  svg {
+    width: calc(var(--base-size) * 2);
+    height: calc(var(--base-size) * 2);
+  }
+
+  &:hover {
+    background: rgba(128, 128, 128, 0.1);
+    border-color: rgba(128, 128, 128, 0.5);
+  }
+}
+
+.placeholder {
+  width: calc(var(--base-size) * 4);
+  height: calc(var(--base-size) * 4);
+  flex-shrink: 0;
+}

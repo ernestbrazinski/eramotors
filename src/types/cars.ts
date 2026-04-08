@@ -35,7 +35,7 @@ export interface Car {
   pricePerDay: number;
   year: number;
   image: string;
-  /** Расход топлива л/100км (для калькулятора) */
+  /** Fuel consumption in l/100km (used by the travel calculator) */
   consumptionL100: number;
   specs: CarSpecs;
   additionalSpecs?: CarAdditionalSpecKey[];

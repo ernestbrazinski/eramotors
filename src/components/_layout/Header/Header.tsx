@@ -6,19 +6,19 @@ import {
   LANGUAGES,
   type LanguageCode,
   CURRENCIES,
-  PHONE_NUMBER,
-  PHONE_NUMBER_DISPLAY,
 } from "@/src/constants/main";
 import { getHeaderMessages } from "@/src/constants/locales";
 
-// Contexts
-import type { CurrencyCode } from "@/src/contexts/CurrencyContext";
-import { useCurrency } from "@/src/contexts/CurrencyContext";
-import { useLocale } from "@/src/contexts/LocaleContext";
+import type { CurrencyCode } from "@/src/stores/currencyStore";
+import { useCurrency } from "@/src/stores/currencyStore";
+import { useLocale } from "@/src/stores/localeStore";
 
 // Components
 import { Select } from "@/src/components/_ui";
 import Img from "@/src/components/_ui/Img/Img";
+import MessengerDropdown from "@/src/components/_ui/MessengerDropdown/MessengerDropdown";
+import ThemeToggle from "./ThemeToggle";
+import HeaderNav from "./HeaderNav";
 import Link from "next/link";
 
 // Data
@@ -41,10 +41,10 @@ export default function Header() {
           <Link href="/" className={styles.headerLogo}>
             <Img src="/icons/eramotors-logo-animated-dark.svg" alt={t.logoAlt} />
           </Link>
+          <HeaderNav />
           <div className={styles.headerRight}>
-            <a href={`tel:${PHONE_NUMBER}`} className={styles.headerPhone}>
-              {PHONE_NUMBER_DISPLAY}
-            </a>
+            <ThemeToggle />
+            <MessengerDropdown iconsView="grid" placement="bottom" />
 
             <div className={styles.selectWrapper}>
               <Select
