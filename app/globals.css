@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import "../src/styles/ui-primitives.css";
 @plugin "./hero.ts";
 @source "../node_modules/@heroui/theme/dist/**/*.{js,ts,jsx,tsx}";
 @custom-variant dark (&:is(.dark *));
@@ -19,6 +20,7 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-primary: var(--primary);
   --font-sans: var(--font-lato), Tahoma, sans-serif;
   --font-mono: ui-monospace, "Cascadia Code", monospace;
 }
@@ -70,6 +72,10 @@ body {
   :root {
     --base-size: 0.746vw !important;
   }
+
+  .container {
+    padding: 0 calc(var(--base-size) * 1.6);
+  }
 }
 
 /* Breakpoint MD */
@@ -90,5 +96,294 @@ body {
 @media only screen and (max-width: 440px) {
   :root {
     --base-size: 2.667vw !important;
+  }
+}
+
+/* ── Typography (fluid with --base-size)
+   Prefix er-t-* = text scale only (size, weight, line-height).
+   Color, opacity, margins — через Tailwind на элементе. ── */
+.er-t-display {
+  font-size: calc(var(--base-size) * 3.6);
+  font-weight: 700;
+  line-height: 1.15;
+}
+
+.er-t-h2 {
+  font-size: calc(var(--base-size) * 3);
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.er-t-h3 {
+  font-size: calc(var(--base-size) * 1.8);
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.er-t-h3-soft {
+  font-size: calc(var(--base-size) * 1.8);
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+.er-t-title {
+  font-size: calc(var(--base-size) * 2);
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.er-t-lead {
+  font-size: calc(var(--base-size) * 1.6);
+  line-height: 1.5;
+}
+
+.er-t-input {
+  font-size: calc(var(--base-size) * 1.6);
+  line-height: 1.25;
+}
+
+.er-t-body {
+  font-size: calc(var(--base-size) * 1.5);
+  line-height: 1.5;
+}
+
+.er-t-body-medium {
+  font-size: calc(var(--base-size) * 1.5);
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.er-t-body-sm {
+  font-size: calc(var(--base-size) * 1.4);
+  line-height: 1.4;
+}
+
+.er-t-label {
+  font-size: calc(var(--base-size) * 1.4);
+  line-height: 1.35;
+}
+
+.er-t-ui {
+  font-size: calc(var(--base-size) * 1.3);
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.er-t-ui-md {
+  font-size: calc(var(--base-size) * 1.4);
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.er-t-chip {
+  font-size: calc(var(--base-size) * 1.3);
+  line-height: 1.2;
+}
+
+.er-t-caption {
+  font-size: calc(var(--base-size) * 1.2);
+  line-height: 1.35;
+}
+
+.er-t-caption-bold {
+  font-size: calc(var(--base-size) * 1.2);
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.er-t-micro {
+  font-size: calc(var(--base-size) * 1.1);
+  line-height: 1.35;
+}
+
+.er-t-cta {
+  font-size: calc(var(--base-size) * 1.45);
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.er-t-nav {
+  font-size: calc(var(--base-size) * 1.5);
+  font-weight: 500;
+  line-height: 1.3;
+}
+
+.er-t-price-xl {
+  font-size: calc(var(--base-size) * 2.8);
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+.er-t-price {
+  font-size: calc(var(--base-size) * 2.2);
+  font-weight: 700;
+  line-height: 1.15;
+}
+
+.er-t-price-old {
+  font-size: calc(var(--base-size) * 1.6);
+  line-height: 1.2;
+}
+
+.er-t-badge {
+  font-size: calc(var(--base-size) * 1.2);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  line-height: 1.2;
+}
+
+.er-t-banner-headline {
+  margin: 0;
+  font-size: clamp(
+    calc(var(--base-size) * 2.4),
+    4vw,
+    calc(var(--base-size) * 4.2)
+  );
+  font-weight: 700;
+  line-height: 1.15;
+}
+
+.er-t-banner-lead {
+  font-size: calc(var(--base-size) * 1.5);
+  line-height: 1.5;
+}
+
+.er-t-overline {
+  font-size: calc(var(--base-size) * 1.2);
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  line-height: 1.3;
+}
+
+.er-t-pill {
+  font-size: calc(var(--base-size) * 1.5);
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+.er-t-semibold-sm {
+  font-size: calc(var(--base-size) * 1.4);
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.er-t-row {
+  font-size: calc(var(--base-size) * 1.4);
+  line-height: 1.35;
+}
+
+.er-t-row-strong {
+  font-size: calc(var(--base-size) * 1.4);
+  font-weight: 600;
+  line-height: 1.35;
+}
+
+.er-t-final {
+  font-size: calc(var(--base-size) * 1.5);
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.er-t-hint-inline {
+  font-size: calc(var(--base-size) * 1.3);
+  font-weight: 500;
+  line-height: 1.35;
+}
+
+.er-t-floating-hint {
+  font-size: calc(var(--base-size) * 1.15);
+  font-weight: 500;
+  line-height: 1.35;
+}
+
+/* Main banner — Swiper pagination (scoped) */
+.er-main-banner-swiper {
+  width: 100%;
+  height: 100%;
+}
+
+.er-main-banner-swiper .swiper-pagination {
+  bottom: calc(var(--base-size) * 1.8) !important;
+  z-index: 5;
+}
+
+.er-main-banner-swiper .swiper-pagination-bullet {
+  width: calc(var(--base-size) * 0.9);
+  height: calc(var(--base-size) * 0.9);
+  background: rgba(255, 255, 255, 0.45);
+  opacity: 1;
+}
+
+.er-main-banner-swiper .swiper-pagination-bullet-active {
+  background: var(--primary);
+}
+
+/* Header nav — calculator selection hint */
+.er-header-calculator-hint {
+  position: absolute;
+  top: calc(100% + var(--base-size) * 0.35);
+  left: 50%;
+  z-index: 20;
+  max-width: min(calc(var(--base-size) * 26), 72vw);
+  padding: calc(var(--base-size) * 0.65) calc(var(--base-size) * 1);
+  text-align: center;
+  color: var(--foreground);
+  background: var(--background);
+  border: 1px solid var(--primary);
+  border-radius: calc(var(--base-size) * 0.9);
+  pointer-events: none;
+  transform: translate(-50%, 0);
+  animation: er-calculator-hint-flash 2.45s ease-in-out forwards;
+}
+
+@keyframes er-calculator-hint-flash {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, calc(var(--base-size) * -0.6)) scale(0.94);
+    box-shadow:
+      0 calc(var(--base-size) * 0.35) calc(var(--base-size) * 1) rgba(236, 32, 36, 0.08),
+      0 0 0 1px rgba(236, 32, 36, 0.04);
+  }
+
+  8% {
+    opacity: 1;
+    transform: translate(-50%, 0) scale(1.03);
+    box-shadow:
+      0 calc(var(--base-size) * 0.55) calc(var(--base-size) * 2) rgba(236, 32, 36, 0.28),
+      0 0 0 1px rgba(236, 32, 36, 0.14);
+  }
+
+  14% {
+    transform: translate(-50%, 0) scale(1);
+  }
+
+  30%,
+  50%,
+  70% {
+    box-shadow:
+      0 calc(var(--base-size) * 0.5) calc(var(--base-size) * 1.8) rgba(236, 32, 36, 0.24),
+      0 0 0 1px rgba(236, 32, 36, 0.1);
+  }
+
+  40%,
+  60% {
+    box-shadow:
+      0 calc(var(--base-size) * 0.35) calc(var(--base-size) * 1.2) rgba(236, 32, 36, 0.12),
+      0 0 0 1px rgba(236, 32, 36, 0.06);
+  }
+
+  82% {
+    opacity: 1;
+    transform: translate(-50%, 0) scale(1);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate(-50%, calc(var(--base-size) * -0.4)) scale(0.96);
+    box-shadow:
+      0 calc(var(--base-size) * 0.2) calc(var(--base-size) * 0.6) rgba(236, 32, 36, 0.06),
+      0 0 0 1px rgba(236, 32, 36, 0.04);
   }
 }

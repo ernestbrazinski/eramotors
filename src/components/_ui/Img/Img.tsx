@@ -1,7 +1,17 @@
-import styles from "./Img.module.scss";
-
-const Img = ({ src, alt, className }: { src: string, alt: string, className?: string }) => {
-  return <img src={src} alt={alt} className={className ? `${styles.Img} ${className}` : styles.Img} />;
-}
+const Img = ({
+  src,
+  alt,
+  className,
+}: {
+  src: string;
+  alt: string;
+  className?: string;
+}) => (
+  <img
+    src={src}
+    alt={alt}
+    className={className ?? "h-full w-full object-cover"}
+  />
+);
 
 export default Img;

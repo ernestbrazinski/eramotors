@@ -1,0 +1,83 @@
+/**
+ * HeroUI Select — shared styles (popover width, trigger height, compact header mode).
+ * Keep component-specific Tailwind in TSX; this file is for third-party slot overrides.
+ */
+
+[data-slot="popover"] {
+  width: auto !important;
+  max-width: min(92vw, calc(var(--base-size) * 28)) !important;
+  box-sizing: border-box;
+}
+
+.er-select-listbox [data-selected="true"] {
+  background: rgba(255, 255, 255, 0.12);
+  color: var(--foreground);
+}
+
+.er-select-selector-hidden {
+  display: none !important;
+}
+
+.er-select-inner-compact {
+  width: 100% !important;
+  max-width: 100% !important;
+}
+
+.er-select-trigger {
+  height: calc(var(--base-size) * 4);
+  min-height: calc(var(--base-size) * 4);
+  box-sizing: border-box;
+}
+
+.er-select-trigger-compact {
+  padding-inline: calc(var(--base-size) * 0.7) !important;
+  border-radius: calc(var(--base-size) * 0.8) !important;
+  border: 1px solid rgba(128, 128, 128, 0.3) !important;
+  background: transparent !important;
+}
+
+.er-select-option-icon {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: calc(var(--base-size) * 2.4);
+  height: auto;
+}
+
+.er-select-option-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.er-select-value-with-icon {
+  display: inline-flex;
+  align-items: center;
+  gap: calc(var(--base-size) * 0.8);
+}
+
+.er-select-value-rich {
+  align-items: center;
+  width: 100%;
+  min-width: 0;
+}
+
+.er-select-car-thumb {
+  width: calc(var(--base-size) * 4);
+  height: calc(var(--base-size) * 2.75);
+  border-radius: calc(var(--base-size) * 0.4);
+  overflow: hidden;
+}
+
+.er-select-car-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.er-select-trigger-rich {
+  min-height: calc(var(--base-size) * 5.5);
+  height: auto !important;
+  padding-block: calc(var(--base-size) * 0.55);
+}

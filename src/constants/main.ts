@@ -11,9 +11,9 @@ export const LANGUAGES = [
 export type LanguageCode = (typeof LANGUAGES)[number]["value"];
 
 export const CURRENCIES = [
-  { value: "GEL", label: "GEL - ₾" },
-  { value: "RUB", label: "RUB - ₽" },
-  { value: "USD", label: "USD - $" },
+  { value: "GEL", label: "GEL ₾" },
+  { value: "RUB", label: "RUB ₽" },
+  { value: "USD", label: "USD $" },
   // { value: "EUR", label: "EUR - €" },
   // { value: "PLN", label: "PLN - zł" },
   // { value: "TL", label: "TL - ₺" },

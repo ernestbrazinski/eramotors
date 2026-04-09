@@ -1,5 +1,4 @@
 "use client";
-import styles from "./Header.module.scss";
 
 // Constants
 import {
@@ -35,19 +34,23 @@ export default function Header() {
   const t = getHeaderMessages(language);
 
   return (
-    <header className={styles.header}>
+    <header className="fixed top-0 z-[999] w-full overflow-visible rounded-b-[calc(var(--base-size)*1)] bg-background shadow-[0_4px_20px_rgba(0,0,0,0.06)] dark:shadow-[0_4px_20px_rgba(0,0,0,0.22)]">
       <div className="container">
-        <div className={styles.headerInner}>
-          <Link href="/" className={styles.headerLogo}>
+        <div className="flex w-full flex-row items-center justify-between py-[calc(var(--base-size)*0.8)]">
+          <Link
+            href="/"
+            className="w-[calc(var(--base-size)*15.5)] shrink-0"
+          >
             <Img src="/icons/eramotors-logo-animated-dark.svg" alt={t.logoAlt} />
           </Link>
           <HeaderNav />
-          <div className={styles.headerRight}>
+          <div className="flex shrink-0 flex-row items-center gap-[calc(var(--base-size)*0.9)]">
             <ThemeToggle />
             <MessengerDropdown iconsView="grid" placement="bottom" />
 
-            <div className={styles.selectWrapper}>
+            <div className="w-[calc(var(--base-size)*8)] min-w-[calc(var(--base-size)*7)]">
               <Select
+                compact
                 options={currencyOptions}
                 value={currency}
                 onChange={(v) => setCurrency(v as CurrencyCode)}
@@ -55,8 +58,9 @@ export default function Header() {
               />
             </div>
 
-            <div className={styles.selectWrapper}>
+            <div className="w-[calc(var(--base-size)*8)] min-w-[calc(var(--base-size)*7)]">
               <Select
+                compact
                 options={languageOptions}
                 value={language}
                 onChange={(v) => setLanguage(v as LanguageCode)}

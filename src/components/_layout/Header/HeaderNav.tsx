@@ -1,9 +1,10 @@
 "use client";
 
+import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useTravel } from "@/src/stores/travelStore";
-import styles from "./HeaderNav.module.scss";
+import clsx from "clsx";
 
 const NAV_LINKS = [
   {
@@ -51,38 +52,76 @@ function scrollToAnchor(anchor: string) {
   window.scrollTo({ top, behavior: "smooth" });
 }
 
+function calculatorSelectionHint(hasCar: boolean, hasPlaces: boolean): string {
+  if (hasCar && hasPlaces) {
+    return "Автомобиль и маршрут учтены в расчёте поездки — откройте калькулятор";
+  }
+  if (hasCar) {
+    return "Автомобиль добавлен в расчёт стоимости поездки — откройте калькулятор";
+  }
+  return "Маршрут добавлен в расчёт стоимости поездки — откройте калькулятор";
+}
+
+const CALCULATOR_HINT_MS = 2600;
+
 export default function HeaderNav() {
   const pathname = usePathname();
   const router = useRouter();
-  const { hasSelection } = useTravel();
+  const { hasSelection, selectedCarId, route } = useTravel();
+  const hasCar = selectedCarId !== null;
+  const hasPlaces = route.length > 0;
+  const routeSignature = useMemo(() => route.map((p) => p.id).join(","), [route]);
 
-  function handleClick(e: React.MouseEvent<HTMLAnchorElement>, anchor: string | null, href: string) {
+  const [showCalculatorHint, setShowCalculatorHint] = useState(false);
+
+  useEffect(() => {
+    if (!hasSelection) {
+      queueMicrotask(() => setShowCalculatorHint(false));
+      return;
+    }
+    queueMicrotask(() => setShowCalculatorHint(true));
+    const t = window.setTimeout(() => setShowCalculatorHint(false), CALCULATOR_HINT_MS);
+    return () => window.clearTimeout(t);
+  }, [hasSelection, selectedCarId, routeSignature]);
+
+  function handleClick(e: React.MouseEvent<HTMLAnchorElement>, anchor: string | null) {
     if (!anchor) return;
     e.preventDefault();
     if (pathname === "/") {
       scrollToAnchor(anchor);
     } else {
       router.push("/");
-      // After navigation the anchor will be resolved via the native hash
       setTimeout(() => scrollToAnchor(anchor), 300);
     }
   }
 
   return (
-    <nav className={styles.nav}>
+    <nav className="flex flex-row items-center gap-[calc(var(--base-size)*0.4)] overflow-visible">
       {NAV_LINKS.map(({ label, href, anchor, icon }) => {
         const isActive = anchor ? false : pathname === href;
         return (
           <Link
             key={href}
             href={href}
-            className={`${styles.link} ${isActive ? styles.linkActive : ""}`}
-            onClick={(e) => handleClick(e, anchor, href)}
+            className={clsx(
+              "er-t-nav relative flex flex-row items-center gap-[calc(var(--base-size)*0.8)] whitespace-nowrap rounded-[calc(var(--base-size)*0.8)] px-[calc(var(--base-size)*1.2)] py-[calc(var(--base-size)*0.8)] text-foreground no-underline opacity-65 transition-[opacity,background] duration-200",
+              "hover:bg-black/8 hover:opacity-100 dark:hover:bg-white/8",
+              isActive && "bg-black/8 font-semibold opacity-100 dark:bg-white/8",
+            )}
+            onClick={(e) => handleClick(e, anchor)}
           >
-            <span className={styles.linkIcon}>{icon}</span>
+            <span className="flex shrink-0 items-center [&_svg]:h-[calc(var(--base-size)*1.8)] [&_svg]:w-[calc(var(--base-size)*1.8)]">
+              {icon}
+            </span>
             <span>{label}</span>
-            {href === "/travel" && hasSelection && (
-              <span className={styles.dot} aria-hidden="true" />
+            {href === "/travel" && showCalculatorHint && (
+              <span
+                className="er-header-calculator-hint er-t-floating-hint"
+                role="status"
+                aria-live="polite"
+              >
+                {calculatorSelectionHint(hasCar, hasPlaces)}
+              </span>
             )}
           </Link>
         );

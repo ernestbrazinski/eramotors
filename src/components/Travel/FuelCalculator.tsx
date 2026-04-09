@@ -5,11 +5,9 @@ import type { Car } from "@/src/types/cars";
 import type { Place } from "@/src/types/places";
 import { useCurrency } from "@/src/stores/currencyStore";
 import { cars as carsData } from "@/src/api/demo/cars";
-import styles from "./FuelCalculator.module.scss";
 
 const cars = carsData;
 
-/** Default fuel price in Georgia (GEL/l) — update or fetch on booking date */
 const DEFAULT_FUEL_PRICE_GEL = 3.05;
 
 interface FuelCalculatorProps {
@@ -24,7 +22,7 @@ export default function FuelCalculator({ place }: FuelCalculatorProps) {
   const results = useMemo(() => {
     if (!place) return null;
     const distanceRoundTrip = place.distanceFromTbilisi * 2;
-    return cars.map((car) => {
+    return cars.map((car: Car) => {
       const liters = (distanceRoundTrip / 100) * car.consumptionL100;
       const costGel = liters * fuelPricePerLiter;
       return { car, liters, costGel };
@@ -33,9 +31,11 @@ export default function FuelCalculator({ place }: FuelCalculatorProps) {
 
   if (!place) {
     return (
-      <div className={styles.calculator}>
-        <h3 className={styles.calculatorTitle}>Калькулятор топлива</h3>
-        <p className={styles.note}>
+      <div className="flex w-full max-w-[calc(var(--base-size)*50)] flex-col gap-[calc(var(--base-size)*2)] rounded-[calc(var(--base-size)*0.8)] border border-foreground p-[calc(var(--base-size)*2)]">
+        <h3 className="er-t-h3 m-0">
+          Калькулятор топлива
+        </h3>
+        <p className="er-t-caption m-0 opacity-80">
           Выберите место поездки — расчёт будет с учётом расстояния туда и обратно и расхода каждой машины.
         </p>
       </div>
@@ -43,16 +43,16 @@ export default function FuelCalculator({ place }: FuelCalculatorProps) {
   }
 
   return (
-    <div className={styles.calculator}>
-      <h3 className={styles.calculatorTitle}>
+    <div className="flex w-full max-w-[calc(var(--base-size)*50)] flex-col gap-[calc(var(--base-size)*2)] rounded-[calc(var(--base-size)*0.8)] border border-foreground p-[calc(var(--base-size)*2)]">
+      <h3 className="er-t-h3 m-0">
         Топливо до «{place.name}» и обратно
       </h3>
-      <p className={styles.note}>
+      <p className="er-t-caption m-0 opacity-80">
         Расстояние от Тбилиси: {place.distanceFromTbilisi} км (туда и обратно:{" "}
         {place.distanceFromTbilisi * 2} км).
       </p>
-      <div className={styles.priceRow}>
-        <label htmlFor="fuel-price" className={styles.priceLabel}>
+      <div className="flex flex-row flex-wrap items-center gap-[calc(var(--base-size)*2)]">
+        <label htmlFor="fuel-price" className="er-t-label">
           Цена топлива ({formatCurrencyLabel("л")}):
         </label>
         <input
@@ -60,24 +60,27 @@ export default function FuelCalculator({ place }: FuelCalculatorProps) {
           type="number"
           min="0"
           step="0.01"
-          className={styles.priceInput}
+          className="er-t-input w-[calc(var(--base-size)*10)] rounded-[calc(var(--base-size)*0.4)] border border-foreground bg-background px-[calc(var(--base-size)*1)] py-[calc(var(--base-size)*0.6)] text-foreground"
           value={fuelPricePerLiter}
           onChange={(e) =>
             setFuelPricePerLiter(parseFloat(e.target.value) || 0)
           }
         />
       </div>
-      <div className={styles.carList}>
+      <div className="flex flex-col gap-[calc(var(--base-size)*1)]">
         {results?.map(({ car, liters, costGel }) => (
-          <div key={car.id} className={styles.carRow}>
-            <span className={styles.carName}>{car.name}</span>
-            <span className={styles.carFuel}>
+          <div
+            key={car.id}
+            className="er-t-chip flex flex-row items-center justify-between rounded-[calc(var(--base-size)*0.4)] border border-foreground px-[calc(var(--base-size)*1.2)] py-[calc(var(--base-size)*1)]"
+          >
+            <span className="font-semibold">{car.name}</span>
+            <span className="ml-[calc(var(--base-size)*2)] shrink-0">
               {liters.toFixed(1)} л {formatPrice(costGel)}
             </span>
           </div>
         ))}
       </div>
-      <p className={styles.note}>
+      <p className="er-t-caption m-0 opacity-80">
         Цены на топливо можно уточнять на день брони (например, через API или
         парсинг актуальных данных).
       </p>

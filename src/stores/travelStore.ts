@@ -6,6 +6,8 @@ type TravelState = {
   selectedCarId: string | null;
   route: Place[];
   setCarId: (id: string | null) => void;
+  /** Устанавливает авто без toggle (для Select и т.п.) */
+  pickCarId: (id: string | null) => void;
   togglePlace: (place: Place) => void;
   moveUp: (idx: number) => void;
   moveDown: (idx: number) => void;
@@ -19,6 +21,7 @@ export const useTravelStore = create<TravelState>((set) => ({
   route: [],
   setCarId: (id) =>
     set((s) => ({ selectedCarId: s.selectedCarId === id ? null : id })),
+  pickCarId: (id) => set({ selectedCarId: id }),
   togglePlace: (place) =>
     set((s) => {
       const exists = s.route.some((p) => p.id === place.id);
@@ -53,6 +56,7 @@ export function useTravel() {
       route: s.route,
       hasSelection: s.selectedCarId !== null || s.route.length > 0,
       setCarId: s.setCarId,
+      pickCarId: s.pickCarId,
       togglePlace: s.togglePlace,
       moveUp: s.moveUp,
       moveDown: s.moveDown,
