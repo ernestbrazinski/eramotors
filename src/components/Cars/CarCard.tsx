@@ -19,7 +19,7 @@ function SpecRow({
   value: string | number | boolean;
 }) {
   return (
-    <li className="er-t-body-sm flex flex-row items-center gap-[calc(var(--base-size)*0.8)]">
+    <li className="flex flex-row items-center gap-[calc(var(--base-size)*0.8)] text-[calc(var(--base-size)*1.4)] leading-[1.4]">
       <span className="opacity-85">{label}:</span>
       <span className="font-medium">{value}</span>
     </li>
@@ -53,7 +53,7 @@ export default function CarCard({ car }: CarCardProps) {
           className="block h-full w-full object-cover transition-transform duration-300 ease-out group-hover:scale-105"
         />
         {isSelected && (
-          <div className="er-t-caption-bold absolute top-[calc(var(--base-size)*1.2)] left-[calc(var(--base-size)*1.2)] flex items-center gap-[calc(var(--base-size)*0.6)] rounded-[calc(var(--base-size)*2)] bg-primary px-[calc(var(--base-size)*1.2)] py-[calc(var(--base-size)*0.5)] text-white">
+          <div className="absolute top-[calc(var(--base-size)*1.2)] left-[calc(var(--base-size)*1.2)] flex items-center gap-[calc(var(--base-size)*0.6)] rounded-[calc(var(--base-size)*2)] bg-primary px-[calc(var(--base-size)*1.2)] py-[calc(var(--base-size)*0.5)] text-[calc(var(--base-size)*1.2)] font-bold leading-[1.2] text-white">
             <svg className="h-[calc(var(--base-size)*1.4)] w-[calc(var(--base-size)*1.4)] shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
               <polyline points="20 6 9 17 4 12" />
             </svg>
@@ -62,10 +62,10 @@ export default function CarCard({ car }: CarCardProps) {
         )}
       </div>
       <div className="flex flex-1 flex-col gap-[calc(var(--base-size)*1)] p-[calc(var(--base-size)*2)]">
-        <h3 className="er-t-title m-0">
+        <h3 className="m-0 text-[calc(var(--base-size)*2)] font-bold leading-[1.2]">
           {car.name}
         </h3>
-        <p className="er-t-lead rounded-[calc(var(--base-size)*1.6)] bg-primary py-[calc(var(--base-size)*0.4)] text-center font-semibold text-white">
+        <p className="rounded-[calc(var(--base-size)*1.6)] bg-primary py-[calc(var(--base-size)*0.4)] text-center text-[calc(var(--base-size)*1.6)] leading-[1.5] font-semibold text-white">
           {formatPrice(car.pricePerDay)} / день
         </p>
         <ul className="m-0 flex list-none flex-col gap-[calc(var(--base-size)*0.6)] p-0">
@@ -74,7 +74,7 @@ export default function CarCard({ car }: CarCardProps) {
         </ul>
 
         {car.additionalSpecs && car.additionalSpecs.length > 0 && (
-          <div className="er-t-chip flex flex-wrap gap-[calc(var(--base-size)*0.8)]">
+          <div className="flex flex-wrap gap-[calc(var(--base-size)*0.8)] text-[calc(var(--base-size)*1.3)] leading-[1.2]">
             {car.additionalSpecs.map((key) => (
               <span
                 key={key}
@@ -89,7 +89,7 @@ export default function CarCard({ car }: CarCardProps) {
         <div className="mt-auto flex flex-col gap-[calc(var(--base-size)*0.8)]">
           <button
             className={clsx(
-              "er-t-ui w-full cursor-pointer rounded-[calc(var(--base-size)*1)] border border-[rgba(128,128,128,0.3)] bg-transparent px-[calc(var(--base-size)*1.6)] py-[calc(var(--base-size)*0.9)] text-foreground transition-[background,border-color,color] duration-200 hover:border-primary hover:text-primary",
+              "w-full cursor-pointer rounded-[calc(var(--base-size)*1)] border border-[rgba(128,128,128,0.3)] bg-transparent px-[calc(var(--base-size)*1.6)] py-[calc(var(--base-size)*0.9)] text-[calc(var(--base-size)*1.3)] font-semibold leading-[1.3] text-foreground transition-[background,border-color,color] duration-200 hover:border-primary hover:text-primary",
               isSelected && "border-primary bg-[rgba(236,32,36,0.08)] text-primary",
             )}
             onClick={() => setCarId(car.id)}

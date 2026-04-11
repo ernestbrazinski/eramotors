@@ -104,7 +104,7 @@ export default function HeaderNav() {
             key={href}
             href={href}
             className={clsx(
-              "er-t-nav relative flex flex-row items-center gap-[calc(var(--base-size)*0.8)] whitespace-nowrap rounded-[calc(var(--base-size)*0.8)] px-[calc(var(--base-size)*1.2)] py-[calc(var(--base-size)*0.8)] text-foreground no-underline opacity-65 transition-[opacity,background] duration-200",
+              "relative flex flex-row items-center gap-[calc(var(--base-size)*0.8)] whitespace-nowrap rounded-[calc(var(--base-size)*0.8)] px-[calc(var(--base-size)*1.2)] py-[calc(var(--base-size)*0.8)] text-[calc(var(--base-size)*1.5)] font-medium leading-[1.3] text-foreground no-underline opacity-65 transition-[opacity,background] duration-200",
               "hover:bg-black/8 hover:opacity-100 dark:hover:bg-white/8",
               isActive && "bg-black/8 font-semibold opacity-100 dark:bg-white/8",
             )}
@@ -116,7 +116,7 @@ export default function HeaderNav() {
             <span>{label}</span>
             {href === "/travel" && showCalculatorHint && (
               <span
-                className="er-header-calculator-hint er-t-floating-hint"
+                className="er-header-calculator-hint text-[calc(var(--base-size)*1.15)] font-medium leading-[1.35]"
                 role="status"
                 aria-live="polite"
               >

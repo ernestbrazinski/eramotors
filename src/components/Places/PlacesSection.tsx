@@ -20,31 +20,31 @@ function PlaceCard({ place }: { place: Place }) {
       )}
     >
       <div className="flex items-center justify-between">
-        <span className="er-t-caption font-medium opacity-50">
+        <span className="text-[calc(var(--base-size)*1.2)] leading-[1.35] font-medium opacity-50">
           {place.distanceFromTbilisi} км от Тбилиси
         </span>
         {isSelected && (
-          <span className="er-t-caption-bold flex h-[calc(var(--base-size)*2.4)] w-[calc(var(--base-size)*2.4)] shrink-0 items-center justify-center rounded-full bg-primary text-white">
+          <span className="flex h-[calc(var(--base-size)*2.4)] w-[calc(var(--base-size)*2.4)] shrink-0 items-center justify-center rounded-full bg-primary text-[calc(var(--base-size)*1.2)] font-bold leading-[1.2] text-white">
             {idx + 1}
           </span>
         )}
       </div>
-      <h3 className="er-t-h3 m-0">
+      <h3 className="m-0 text-[calc(var(--base-size)*1.8)] font-bold leading-[1.25]">
         {place.name}
       </h3>
-      <p className="er-t-body-sm m-0 flex-1 opacity-70">
+      <p className="m-0 flex-1 text-[calc(var(--base-size)*1.4)] leading-[1.4] opacity-70">
         {place.description}
       </p>
       <div className="mt-[calc(var(--base-size)*0.4)] flex items-center justify-between gap-[calc(var(--base-size)*1)]">
         <Link
           href={`/travel?place=${place.id}`}
-          className="er-t-ui text-primary opacity-70 no-underline transition-opacity duration-200 hover:opacity-100"
+          className="text-[calc(var(--base-size)*1.3)] font-semibold leading-[1.3] text-primary opacity-70 no-underline transition-opacity duration-200 hover:opacity-100"
         >
           Маршрут →
         </Link>
         <button
           className={clsx(
-            "er-t-ui cursor-pointer rounded-[calc(var(--base-size)*0.8)] border border-[rgba(128,128,128,0.3)] bg-transparent px-[calc(var(--base-size)*1.4)] py-[calc(var(--base-size)*0.5)] text-foreground transition-[background,border-color,color] duration-200 hover:border-primary hover:text-primary",
+            "cursor-pointer rounded-[calc(var(--base-size)*0.8)] border border-[rgba(128,128,128,0.3)] bg-transparent px-[calc(var(--base-size)*1.4)] py-[calc(var(--base-size)*0.5)] text-[calc(var(--base-size)*1.3)] font-semibold leading-[1.3] text-foreground transition-[background,border-color,color] duration-200 hover:border-primary hover:text-primary",
             isSelected && "border-primary bg-[rgba(236,32,36,0.08)] text-primary",
           )}
           onClick={() => togglePlace(place)}
@@ -61,10 +61,10 @@ export default function PlacesSection() {
     <section className="w-full py-[calc(var(--base-size)*10)] pb-[calc(var(--base-size)*6)]" id="places">
       <div className="container">
         <div className="flex w-full flex-col items-center">
-          <h2 className="er-t-h2 mb-[calc(var(--base-size)*1)] text-center">
+          <h2 className="mb-[calc(var(--base-size)*1)] text-center text-[calc(var(--base-size)*3)] font-bold leading-[1.2]">
             Куда поехать
           </h2>
-          <p className="er-t-lead mb-[calc(var(--base-size)*4)] text-center opacity-60">
+          <p className="mb-[calc(var(--base-size)*4)] text-center text-[calc(var(--base-size)*1.6)] leading-[1.5] opacity-60">
             Популярные направления из Батуми и Тбилиси
           </p>
           <div className="flex w-full flex-wrap gap-[calc(var(--base-size)*2)]">

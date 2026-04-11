@@ -104,7 +104,7 @@ export default function MessengerDropdown({
         </div>
       ) : triggerLabel ? (
         <button
-          className="er-t-ui w-full cursor-pointer rounded-[calc(var(--base-size)*1)] border border-[rgba(128,128,128,0.3)] bg-transparent px-[calc(var(--base-size)*1.6)] py-[calc(var(--base-size)*0.9)] text-center text-foreground transition-[background,border-color,color] duration-200 hover:border-primary hover:text-primary"
+          className="w-full cursor-pointer rounded-[calc(var(--base-size)*1)] border border-[rgba(128,128,128,0.3)] bg-transparent px-[calc(var(--base-size)*1.6)] py-[calc(var(--base-size)*0.9)] text-center text-[calc(var(--base-size)*1.3)] font-semibold leading-[1.3] text-foreground transition-[background,border-color,color] duration-200 hover:border-primary hover:text-primary"
           onClick={() => setOpen((v) => !v)}
           aria-expanded={open}
         >
@@ -197,7 +197,7 @@ export default function MessengerDropdown({
                 {icon}
               </span>
               {iconsView === "grid" && (
-                <span className="er-t-caption whitespace-nowrap">
+                <span className="whitespace-nowrap text-[calc(var(--base-size)*1.2)] leading-[1.35]">
                   {label}
                 </span>
               )}

@@ -32,10 +32,10 @@ export default function FuelCalculator({ place }: FuelCalculatorProps) {
   if (!place) {
     return (
       <div className="flex w-full max-w-[calc(var(--base-size)*50)] flex-col gap-[calc(var(--base-size)*2)] rounded-[calc(var(--base-size)*0.8)] border border-foreground p-[calc(var(--base-size)*2)]">
-        <h3 className="er-t-h3 m-0">
+        <h3 className="m-0 text-[calc(var(--base-size)*1.8)] font-bold leading-[1.25]">
           Калькулятор топлива
         </h3>
-        <p className="er-t-caption m-0 opacity-80">
+        <p className="m-0 text-[calc(var(--base-size)*1.2)] leading-[1.35] opacity-80">
           Выберите место поездки — расчёт будет с учётом расстояния туда и обратно и расхода каждой машины.
         </p>
       </div>
@@ -44,15 +44,15 @@ export default function FuelCalculator({ place }: FuelCalculatorProps) {
 
   return (
     <div className="flex w-full max-w-[calc(var(--base-size)*50)] flex-col gap-[calc(var(--base-size)*2)] rounded-[calc(var(--base-size)*0.8)] border border-foreground p-[calc(var(--base-size)*2)]">
-      <h3 className="er-t-h3 m-0">
+      <h3 className="m-0 text-[calc(var(--base-size)*1.8)] font-bold leading-[1.25]">
         Топливо до «{place.name}» и обратно
       </h3>
-      <p className="er-t-caption m-0 opacity-80">
+      <p className="m-0 text-[calc(var(--base-size)*1.2)] leading-[1.35] opacity-80">
         Расстояние от Тбилиси: {place.distanceFromTbilisi} км (туда и обратно:{" "}
         {place.distanceFromTbilisi * 2} км).
       </p>
       <div className="flex flex-row flex-wrap items-center gap-[calc(var(--base-size)*2)]">
-        <label htmlFor="fuel-price" className="er-t-label">
+        <label htmlFor="fuel-price" className="text-[calc(var(--base-size)*1.4)] leading-[1.35]">
           Цена топлива ({formatCurrencyLabel("л")}):
         </label>
         <input
@@ -60,7 +60,7 @@ export default function FuelCalculator({ place }: FuelCalculatorProps) {
           type="number"
           min="0"
           step="0.01"
-          className="er-t-input w-[calc(var(--base-size)*10)] rounded-[calc(var(--base-size)*0.4)] border border-foreground bg-background px-[calc(var(--base-size)*1)] py-[calc(var(--base-size)*0.6)] text-foreground"
+          className="w-[calc(var(--base-size)*10)] rounded-[calc(var(--base-size)*0.4)] border border-foreground bg-background px-[calc(var(--base-size)*1)] py-[calc(var(--base-size)*0.6)] text-[calc(var(--base-size)*1.6)] leading-[1.25] text-foreground"
           value={fuelPricePerLiter}
           onChange={(e) =>
             setFuelPricePerLiter(parseFloat(e.target.value) || 0)
@@ -71,7 +71,7 @@ export default function FuelCalculator({ place }: FuelCalculatorProps) {
         {results?.map(({ car, liters, costGel }) => (
           <div
             key={car.id}
-            className="er-t-chip flex flex-row items-center justify-between rounded-[calc(var(--base-size)*0.4)] border border-foreground px-[calc(var(--base-size)*1.2)] py-[calc(var(--base-size)*1)]"
+            className="flex flex-row items-center justify-between rounded-[calc(var(--base-size)*0.4)] border border-foreground px-[calc(var(--base-size)*1.2)] py-[calc(var(--base-size)*1)] text-[calc(var(--base-size)*1.3)] leading-[1.2]"
           >
             <span className="font-semibold">{car.name}</span>
             <span className="ml-[calc(var(--base-size)*2)] shrink-0">
@@ -80,7 +80,7 @@ export default function FuelCalculator({ place }: FuelCalculatorProps) {
           </div>
         ))}
       </div>
-      <p className="er-t-caption m-0 opacity-80">
+      <p className="m-0 text-[calc(var(--base-size)*1.2)] leading-[1.35] opacity-80">
         Цены на топливо можно уточнять на день брони (например, через API или
         парсинг актуальных данных).
       </p>

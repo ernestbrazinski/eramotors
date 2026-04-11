@@ -30,7 +30,7 @@ const ALL_CATEGORIES: CarCategory[] = [
 ];
 
 const categoryBtnClass =
-  "er-t-ui-md min-h-0 whitespace-nowrap rounded-[calc(var(--base-size)*0.4)] px-[calc(var(--base-size)*1.6)] py-[calc(var(--base-size)*0.8)]";
+  "min-h-0 whitespace-nowrap rounded-[calc(var(--base-size)*0.8)] px-[calc(var(--base-size)*1.6)] py-[calc(var(--base-size)*0.8)] text-[calc(var(--base-size)*1.4)] font-semibold leading-[1.3]";
 
 export default function CarsSection() {
   const [category, setCategory] = useState<CarCategory | "all">("all");
@@ -54,7 +54,7 @@ export default function CarsSection() {
     >
       <div className="container">
         <div className="w-full">
-          <div className="mb-[calc(var(--base-size)*3)] flex flex-row flex-wrap items-center justify-between gap-[calc(var(--base-size)*2)]">
+          <div className="mb-[calc(var(--base-size)*4)] flex flex-row flex-wrap items-center justify-between gap-[calc(var(--base-size)*2)]">
             <div className="flex flex-row flex-wrap items-center justify-center gap-[calc(var(--base-size)*1)]">
               <Button
                 size="sm"
@@ -77,7 +77,7 @@ export default function CarsSection() {
               ))}
             </div>
             <div className="flex flex-row items-center gap-[calc(var(--base-size)*1)]">
-              <span className="er-t-label">Сортировка:</span>
+              <span className="text-[calc(var(--base-size)*1.4)] leading-[1.35]">Сортировка:</span>
               <Select
                 options={SORT_OPTIONS}
                 value={sort}

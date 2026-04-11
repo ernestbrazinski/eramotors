@@ -1,13 +1,10 @@
 import { create } from "zustand";
 
-export type CurrencyCode = "GEL" | "USD" | "EUR" | "RUB" | "PLN" | "TL";
+export type CurrencyCode = "GEL" | "USD" | "RUB";
 
 const GEL_RATES: Record<Exclude<CurrencyCode, "GEL">, number> = {
   USD: 0.37,
-  EUR: 0.34,
   RUB: 37,
-  PLN: 1.48,
-  TL: 1.48,
 };
 
 type CurrencyState = {

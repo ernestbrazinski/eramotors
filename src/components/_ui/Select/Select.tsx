@@ -7,7 +7,7 @@ export type SelectOption = {
   label: string;
   value: string;
   icon?: string;
-  /** Вторичная строка (категория, характеристики) */
+  /** Secondary line (e.g. category, specs) */
   description?: string;
 };
 
@@ -36,7 +36,7 @@ function SelectedValue({ option }: { option: SelectOption }) {
         ) : null}
         <span className="flex min-w-0 flex-1 flex-col gap-[0.1em] text-left">
           <span className="truncate font-semibold">{label}</span>
-          <span className="er-t-caption truncate opacity-65">{description}</span>
+          <span className="truncate text-[calc(var(--base-size)*1.2)] leading-[1.35] opacity-65">{description}</span>
         </span>
       </span>
     );
@@ -124,10 +124,10 @@ export default function Select({
         >
           {option.description ? (
             <div className="flex min-w-0 flex-col gap-[calc(var(--base-size)*0.2)] py-[calc(var(--base-size)*0.15)]">
-              <span className="er-t-body font-semibold leading-tight">
+              <span className="text-[calc(var(--base-size)*1.5)] font-semibold leading-tight">
                 {option.label}
               </span>
-              <span className="er-t-caption leading-snug opacity-65">
+              <span className="text-[calc(var(--base-size)*1.2)] leading-snug opacity-65">
                 {option.description}
               </span>
             </div>
