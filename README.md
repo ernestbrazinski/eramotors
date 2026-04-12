@@ -1,3 +1,7 @@
+**Eramotors** — a pet project built with React ([Next.js](https://nextjs.org)), currently a prototype for car rental in Georgia.
+
+---
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started
